@@ -10,7 +10,7 @@ class DBRuleInteraction {
     public function selectRulesByName($ruleName) {
         $stmt = "SELECT COUNT(*) as ruleCount from " . self::TABLE_NAME . " WHERE name = '" . $ruleName . "'";
 
-        $result = Database::getInstance()->execute($stmt)->fetch();
+        $result = Database::getInstance()->execute($stmt)->fetchAssoc();
 
         return $result["ruleCount"] ?? 0;;
     }
