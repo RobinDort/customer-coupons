@@ -2,9 +2,9 @@
 namespace RobinDort\CustomerCoupons\Model;
 
 use RobinDort\CustomerCoupons\Database\DBRuleRestrictionInteraction;
-use Contao\Model;
+use Isotope\Model\Rule;
 
-class CustomRuleRestriction extends Model {
+class CustomRuleRestriction extends Rule {
 
     private $pid;
     private $object_id;
