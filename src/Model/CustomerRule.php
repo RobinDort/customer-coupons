@@ -63,6 +63,9 @@ class CustomerRule extends Rule {
         $this->code = "TestCode";
         $this->limitPerMember = 1;
         $this->maxSubtotal = 2000;
+        $this->minWeight = "a:2:{s:4:'unit';s:2:'kg';s:5:'value';s:0:'';}";
+        $this->maxWeight = "a:2:{s:4:'unit';s:2:'kg';s:5:'value';s:0:'';}";
+        $this->quantityMode = "product_quantity";
         $this->configCondition = true;
         $this->memberRestrictions = "groups";
         $this->memberCondition = true;
