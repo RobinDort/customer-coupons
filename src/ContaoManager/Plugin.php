@@ -12,7 +12,7 @@ use RobinDort\CustomerCoupons\RobinDortCustomerCouponsBundle;
 // use Symfony\Component\Config\Loader\LoaderResolverInterface;
 // use Symfony\Component\HttpKernel\KernelInterface;
 
-class Plugin implements BundlePluginInterface, RoutingPluginInterface {
+class Plugin implements BundlePluginInterface {
     public function getBundles(ParserInterface $parser): array {
         return [
             BundleConfig::create(RobinDortCustomerCouponsBundle::class)
