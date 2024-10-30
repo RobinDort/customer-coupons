@@ -1,0 +1,33 @@
+{
+	"name": "robindort/customer-coupons",
+	"type": "contao-bundle",
+	"description": "A contao/isotope bundle that allows customers to buy / obtain a new coupon for a later use",
+	"homepage": "https://github.com/RobinDort/customer-coupons",
+	"version": "1.0",
+	"license": "LGPL-3.0-or-later",
+	"autoload": {
+		"psr-4": {
+			"RobinDort\\CustomerCoupons\\": "src/"
+		}
+	},
+	"authors": [
+		{
+			"name": "Robin Dort",
+			"homepage": "https://www.alexanderdort.com"
+		}
+	],
+	"require": {
+		"php": "^8.2",
+		"contao/core-bundle": "^4.13",
+		"isotope/isotope-core": "^2.9.0"
+	},
+	"require-dev": {
+		"contao/manager-plugin": "^2.0"
+	},
+	"conflict": {
+		"contao/manager-plugin": "<2.0 || >=3.0"
+	},
+	"extra": {
+		"contao-manager-plugin": "RobinDort\\CustomerCoupons\\ContaoManager\\Plugin"
+	}
+}
