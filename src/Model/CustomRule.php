@@ -4,7 +4,7 @@ namespace RobinDort\CustomerCoupons\Model;
 use Isotope\Model\Rule;
 use RobinDort\CustomerCoupons\Database\DBRuleInteraction;
 
-class CustomerRule extends Rule {
+class CustomRule extends Rule {
 
     /**
     * Properties extended from Contaos/Isotopes Rule/Model class.
@@ -101,6 +101,10 @@ class CustomerRule extends Rule {
         }
 
         return false;
+    }
+
+    public function getRuleID() {
+        return $this->id;
     }
 
 }
