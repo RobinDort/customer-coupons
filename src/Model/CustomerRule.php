@@ -2,6 +2,7 @@
 namespace RobinDort\CustomerCoupons\Model;
 
 use Isotope\Model\Rule;
+use RobinDort\CustomerCoupons\Database\DBRuleInteraction;
 
 class CustomerRule extends Rule {
 
@@ -87,6 +88,18 @@ class CustomerRule extends Rule {
             \System::log("Error while trying to save new rule:" . $e->getMessage(),__METHOD__,"TL_ERROR");
         }
     }
+
+
+    public function checkRuleExists() {
+        $dbRuleInteraction = new DBRuleInteraction();
+        $ruleCount = $dbRuleInteraction->selectRulesByName($this->name);
+        if ($ruleCount > 0) {
+            return true;
+        }
+
+        return false;
+    }
+
 }
 
 ?>
