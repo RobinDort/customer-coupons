@@ -2,6 +2,6 @@
 use RobinDort\CustomerCoupons\Model\CustomerRule;
 
 $customerRule = new CustomerRule();
-$customerRule->save();
+//$customerRule->save();
 
 ?>
