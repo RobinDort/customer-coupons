@@ -1,6 +1,6 @@
 <?php
 use RobinDort\CustomerCoupons\Model\CustomRule;
-use RobinDort\CustomerCoupons\Model\CustomRuleRestriction;
+use RobinDort\CustomerCoupons\Backend\Database\DBRuleRestrictionInteraction;
 use RobinDort\CustomerCoupons\Backend\Rule\SaveRuleCallback;
 
 $customRule = new CustomRule();
@@ -25,8 +25,14 @@ if (!$ruleExists) {
         $dc->activeRecord= new \stdClass();
         $dc->activeRecord->id = 1;
 
-        $saveRuleCallback = new SaveRuleCallback();
-        $saveRuleCallback->saveRestrictions($varValue, $dc);
+        // check if the restriction exists before saving it
+        $ruleRestrictionInteraction = new DBRuleRestrictionInteraction();
+        $restrictionCount = $ruleRestrictionInteraction->selectRuleRestriction($newRuleID, "groups", 1);
+
+        if (!$restrictionCount > 0) {
+            $saveRuleCallback = new SaveRuleCallback();
+            $saveRuleCallback->saveRestrictions($varValue, $dc);
+        }
 
     }
 }

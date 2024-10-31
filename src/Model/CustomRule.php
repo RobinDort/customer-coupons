@@ -81,24 +81,6 @@ class CustomRule extends Rule {
         $this->enabled = true;
     }
 
-    public function saveRule() {
-        try {
-            if ($this->discount <= 0) {
-                throw new \Exception("Discount must contain a positive value");
-            }
-
-            // save the newly created rule
-            if ($this->save()) {
-                \System::log("Custom rule with ID {$this->id} was created", __METHOD__, 'TL_GENERAL');
-            } else {
-                throw new \Exception("Unable to save new rule to the database.");
-            }
-
-        } catch (\Exception $e) {
-            \System::log("Error while trying to save new rule:" . $e->getMessage(),__METHOD__,"TL_ERROR");
-        }
-    }
-
 
     public function checkRuleExists() {
         $dbRuleInteraction = new DBRuleInteraction();
