@@ -85,6 +85,8 @@ class CouponPage extends PageModel {
 
      public function __construct() {
         parent::__construct();
+        
+        $this->pid = findParentID();
      }
 
 
