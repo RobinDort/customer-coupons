@@ -68,6 +68,10 @@ class CouponProductType extends ProductType {
         return $this->name;
      }
 
+     public function getID() {
+        return $this->id;
+     }
+
 }
 
 ?>

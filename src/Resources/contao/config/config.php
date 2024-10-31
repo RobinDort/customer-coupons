@@ -1,21 +1,71 @@
 <?php
 use RobinDort\CustomerCoupons\Model\CouponProductType;
+use RobinDort\CustomerCoupons\Model\CouponProductGroup;
+
 use RobinDort\CustomerCoupons\Backend\Database\DBProductTypeInteraction;
+use RobinDort\CustomerCoupons\Backend\Database\DBProductGroupInteraction;
 
-use RobinDort\CustomerCoupons\Model\CustomRule;
-use RobinDort\CustomerCoupons\Backend\Database\DBRuleRestrictionInteraction;
-use RobinDort\CustomerCoupons\Backend\Rule\SaveRuleCallback;
+// use RobinDort\CustomerCoupons\Model\CustomRule;
+// use RobinDort\CustomerCoupons\Backend\Database\DBRuleRestrictionInteraction;
+// use RobinDort\CustomerCoupons\Backend\Rule\SaveRuleCallback;
 
-// Create new product type for customer coupons.
+/**
+ * Create new product type for customer coupons.
+ */
 $couponProductType = new CouponProductType();
 
-// check if the coupon product type exists.
+/** 
+ * Check if the coupon product type exists.
+ * */
 $dbProductTypeInteraction = new DBProductTypeInteraction();
 $couponProductTypeCount = $dbProductTypeInteraction->selectProductType($couponProductType->getName());
 if (!$couponProductTypeCount > 0) {
     // save new product type 
     $couponProductType->save();
 }
+
+/**
+ * Check for successful creation of product type
+ */
+
+if ($couponProductType->getID() !== null) {
+
+    /**
+     * Create product group for the coupons
+     */
+    $couponProductGroup = new CouponProductGroup();
+
+    /**
+     * Set product type ID of new product group
+     */
+    $couponProductGroup->setProductType($couponProductType->getID());
+
+    /**
+     * Find highest sorting from tl_iso_group table 
+     */
+    $dbProductGroupInteraction = new DBProductGroupInteraction();
+
+    /**
+     * check if product group already exists
+     */
+    $productGroupCount = $dbProductGroupInteraction->selectProductGroup("Coupons");
+
+    if (!$productGroupCount > 0) {
+        $highestSorting = $dbProductGroupInteraction->selectMaxSorting();
+
+        // Add 128 (2^7) to attach new group at the bottom of the list.
+        $highestSorting += 128;
+        $couponProductGroup->setSorting($highestSorting);
+
+        // save the new group
+        $couponProductGroup->save();
+
+    }
+
+}
+
+
+
 
 
 
