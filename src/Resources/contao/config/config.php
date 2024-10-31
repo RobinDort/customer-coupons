@@ -10,7 +10,7 @@ use RobinDort\CustomerCoupons\Backend\Database\DBProductGroupInteraction;
 // use RobinDort\CustomerCoupons\Backend\Rule\SaveRuleCallback;
 
 
-if (!empty($GLOBALS["INITIAL_SETUP"])) {
+if (empty($GLOBALS["INITIAL_SETUP"])) {
 
     /**
      * Create new product type for customer coupons.
