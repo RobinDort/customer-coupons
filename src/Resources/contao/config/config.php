@@ -27,7 +27,8 @@ if (!$couponProductTypeCount > 0) {
 /**
  * Check for successful creation of product type
  */
-if ($couponProductType->id !== null) {
+
+if ($couponProductType->getID() !== null) {
 
     /**
      * Create product group for the coupons

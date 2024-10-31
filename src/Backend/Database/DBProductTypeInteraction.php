@@ -18,7 +18,7 @@ class DBProductTypeInteraction extends DBTable {
 
         $result = Database::getInstance()->execute($stmt)->fetchAssoc();
 
-        return $result["productTypeCount"] ?? 0;;
+        return $result["productTypeCount"] ?? 0;
     }
 }
 
