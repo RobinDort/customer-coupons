@@ -34,8 +34,21 @@ class CouponProductType extends ProductType {
      private const COUPON_READER_TEMPLATE = "iso_reader_default";
      private const COUPON_LIST_GALLERY = 17;
      private const COUPON_READER_GALLERY = 19;
-     private const COUPON_ATTRIBUTES = array('name'=>'price', 'enabled'=>1);
-
+     private const COUPON_ATTRIBUTES = array
+     (
+         array('name'=>'type', 'enabled'=>1),
+         array('name'=>'pages', 'enabled'=>1),
+         array('name'=>'alias', 'enabled'=>1),
+         array('name'=>'sku', 'enabled'=>1),
+         array('name'=>'name', 'enabled'=>1),
+         array('name'=>'teaser', 'enabled'=>1),
+         array('name'=>'description', 'enabled'=>1),
+         array('name'=>'price', 'enabled'=>1),
+         array('name'=>'images', 'enabled'=>1),
+         array('name'=>'published', 'enabled'=>1),
+         array('name'=>'start', 'enabled'=>1),
+         array('name'=>'stop', 'enabled'=>1),
+     );
 
      public function __construct() {
         parent::__construct();
