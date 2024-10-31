@@ -34,6 +34,7 @@ class CouponProductType extends ProductType {
      private const COUPON_READER_TEMPLATE = "iso_reader_default";
      private const COUPON_LIST_GALLERY = 17;
      private const COUPON_READER_GALLERY = 19;
+     private const COUPON_ATTRIBUTES = array('name'=>'price', 'enabled'=>1);
 
 
      public function __construct() {
@@ -48,6 +49,7 @@ class CouponProductType extends ProductType {
         $this->reader_template = self::COUPON_READER_TEMPLATE;
         $this->list_gallery = self::COUPON_LIST_GALLERY;
         $this->reader_gallery = self::COUPON_READER_GALLERY;
+        $this->attributes = serialize(self::COUPON_ATTRIBUTES);
      }
 
 
