@@ -36,21 +36,17 @@ if ($couponProductType->getID() !== null) {
     $couponProductGroup = new CouponProductGroup();
 
     /**
-     * Set product type ID of new product group
-     */
-    $couponProductGroup->setProductType($couponProductType->getID());
-
-    /**
-     * Find highest sorting from tl_iso_group table 
-     */
-    $dbProductGroupInteraction = new DBProductGroupInteraction();
-
-    /**
      * check if product group already exists
      */
+    $dbProductGroupInteraction = new DBProductGroupInteraction();
     $productGroupCount = $dbProductGroupInteraction->selectProductGroup("Coupons");
 
     if (!$productGroupCount > 0) {
+
+        // Set product type ID of new product group
+        $couponProductGroup->setProductType($couponProductType->getID());
+
+        // Find highest sorting from tl_iso_group table 
         $highestSorting = $dbProductGroupInteraction->selectMaxSorting();
 
         // Add 128 (2^7) to attach new group at the bottom of the list.
