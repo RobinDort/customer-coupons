@@ -1,4 +1,6 @@
 <?php
+namespace RobinDort\CustomerCoupons\Backend\Database;
+
 use RobinDort\CustomerCoupons\Backend\Database\DBTable;
 use Contao\Database;
 
