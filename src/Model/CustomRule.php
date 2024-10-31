@@ -57,8 +57,10 @@ class CustomRule extends Rule {
         ];
 
         $serializedWeightConfig = serialize($weightConfig);
+        $unixTime = time();
 
         // for the first try set default values for the new rule.
+        $this->tstamp = $unixTime;
         $this->name = "Test Gutschein Plugin";
         $this->label = "Plugin Gutscheinrabatt 10€";
         $this->type = "cart";
