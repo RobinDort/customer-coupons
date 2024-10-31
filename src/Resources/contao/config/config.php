@@ -27,11 +27,7 @@ if (!$couponProductTypeCount > 0) {
 /**
  * Check for successful creation of product type
  */
-
-\System::log("product type ID: " . $couponProductType->getID(), __METHOD__, "TL_ERROR");
-throw new \Exception("ID EXP");
-if ($couponProductType->getID() !== null) {
-
+if ($couponProductType->id !== null) {
 
     /**
      * Create product group for the coupons
