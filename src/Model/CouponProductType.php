@@ -28,9 +28,31 @@ class CouponProductType extends ProductType {
      * @property bool   $downloads
      */
 
+     private const COUPON_NAME = "Coupon";
+     private const COUPON_CLASS = "standard";
+     private const COUPON_LIST_TEMPLATE = "iso_list_default";
+     private const COUPON_READER_TEMPLATE = "iso_reader_default";
+     private const COUPON_LIST_GALLERY = 17;
+     private const COUPON_READER_GALLERY = 19;
+
 
      public function __construct() {
         parent::__construct();
+
+        // set the new attributes and options of the coupons product type.
+        $unixtime = time();
+        $this->tstamp = $unixtime;
+        $this->name = self::COUPON_NAME;
+        $this->class = self::COUPON_CLASS;
+        $this->list_template = self::COUPON_LIST_TEMPLATE;
+        $this->reader_template = self::COUPON_READER_TEMPLATE;
+        $this->list_gallery = self::COUPON_LIST_GALLERY;
+        $this->reader_gallery = self::COUPON_READER_GALLERY;
+     }
+
+
+     public function getName() {
+        return $this->name;
      }
 
 }
