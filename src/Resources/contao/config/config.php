@@ -30,6 +30,9 @@ if (!$couponProductTypeCount > 0) {
 
 if ($couponProductType->getID() !== null) {
 
+    \System::log("product type ID: " . $couponProductType->getID(), __METHOD__, "TL_ERROR");
+    throw new \Exception("ID EXP");
+
     /**
      * Create product group for the coupons
      */
