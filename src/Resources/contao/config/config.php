@@ -10,70 +10,78 @@ use RobinDort\CustomerCoupons\Backend\Database\DBProductGroupInteraction;
 // use RobinDort\CustomerCoupons\Backend\Rule\SaveRuleCallback;
 
 
-/**
- * Create new product type for customer coupons.
- */
-$couponProductType = new CouponProductType();
-
-/** 
- * Check if the coupon product type exists.
- * */
-$dbProductTypeInteraction = new DBProductTypeInteraction();
-$couponProductTypeCount = $dbProductTypeInteraction->selectProductType($couponProductType->getName());
-if (!$couponProductTypeCount > 0) {
-    // save new product type 
-    $couponProductType->save();
-
-     /**
-     * Create product group for the coupons
-     */
-    $couponProductGroup = new CouponProductGroup();
-    $couponProductGroup->setProductType(32);
-    $couponProductGroup->setSorting(900);
-
-    // save for debug purpose
-    $couponProductGroup->save();
-
-    // Get the new product type ID.
-   // $productTypeID =  $dbProductTypeInteraction->selectProductTypeID($couponProductType->getName());
+if (!empty($GLOBALS["INITIAL_SETUP"])) {
 
     /**
-     * Check for successful creation of product type
+     * Create new product type for customer coupons.
      */
+    $couponProductType = new CouponProductType();
 
-    if ($productTypeID !== -1) {
-
-        // /**
-        //  * Create product group for the coupons
-        //  */
-        // $couponProductGroup = new CouponProductGroup();
-
-        // // save for debug purpose
-        // $couponProductGroup->save();
+    /** 
+     * Check if the coupon product type exists.
+     * */
+    $dbProductTypeInteraction = new DBProductTypeInteraction();
+    $couponProductTypeCount = $dbProductTypeInteraction->selectProductType($couponProductType->getName());
+    if (!$couponProductTypeCount > 0) {
+        // save new product type 
+        $couponProductType->save();
 
         /**
-         * check if product group already exists
+         * Create product group for the coupons
          */
-        // $dbProductGroupInteraction = new DBProductGroupInteraction();
-        // $productGroupCount = $dbProductGroupInteraction->selectProductGroup($couponProductGroup->getName());
+        $couponProductGroup = new CouponProductGroup();
+        $couponProductGroup->setProductType(32);
+        $couponProductGroup->setSorting(900);
 
-        // if (!$productGroupCount > 0) {
+        // save for debug purpose
+        $couponProductGroup->save();
 
-        //     // Set product type ID of new product group
-        //     $couponProductGroup->setProductType($productTypeID);
+        /**
+         * Set the GLOBAL variable to prevent this code segment from running more than once.
+         */
+        $GLOBALS["INITIAL_SETUP"] = true;
 
-        //     // Find highest sorting from tl_iso_group table 
-        //     $highestSorting = $dbProductGroupInteraction->selectMaxSorting();
+        // Get the new product type ID.
+    // $productTypeID =  $dbProductTypeInteraction->selectProductTypeID($couponProductType->getName());
 
-        //     // Add 128 (2^7) to attach new group at the bottom of the list.
-        //     $highestSorting += 128;
-        //     $couponProductGroup->setSorting($highestSorting);
+        /**
+         * Check for successful creation of product type
+         */
 
-        //     // save the new group
-        //     $couponProductGroup->save();
+       // if ($productTypeID !== -1) {
 
-        // }
+            // /**
+            //  * Create product group for the coupons
+            //  */
+            // $couponProductGroup = new CouponProductGroup();
 
+            // // save for debug purpose
+            // $couponProductGroup->save();
+
+            /**
+             * check if product group already exists
+             */
+            // $dbProductGroupInteraction = new DBProductGroupInteraction();
+            // $productGroupCount = $dbProductGroupInteraction->selectProductGroup($couponProductGroup->getName());
+
+            // if (!$productGroupCount > 0) {
+
+            //     // Set product type ID of new product group
+            //     $couponProductGroup->setProductType($productTypeID);
+
+            //     // Find highest sorting from tl_iso_group table 
+            //     $highestSorting = $dbProductGroupInteraction->selectMaxSorting();
+
+            //     // Add 128 (2^7) to attach new group at the bottom of the list.
+            //     $highestSorting += 128;
+            //     $couponProductGroup->setSorting($highestSorting);
+
+            //     // save the new group
+            //     $couponProductGroup->save();
+
+            // }
+
+       // }
     }
 }
 
