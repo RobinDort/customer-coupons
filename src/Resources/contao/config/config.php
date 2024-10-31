@@ -9,6 +9,7 @@ use RobinDort\CustomerCoupons\Backend\Database\DBProductGroupInteraction;
 // use RobinDort\CustomerCoupons\Backend\Database\DBRuleRestrictionInteraction;
 // use RobinDort\CustomerCoupons\Backend\Rule\SaveRuleCallback;
 
+
 /**
  * Create new product type for customer coupons.
  */

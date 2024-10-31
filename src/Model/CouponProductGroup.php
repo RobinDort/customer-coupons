@@ -5,7 +5,6 @@ use Isotope\Model\Group;
 
 class CouponProductGroup extends Group {
 
-    private const PID = 0;
     private const NAME = "Coupons";
 
     private $product_type;
@@ -16,7 +15,6 @@ class CouponProductGroup extends Group {
 
         $unixTime = time();
         $this->tstamp = $unixTime;
-        $this->pid = self::PID;
         $this->name = self::NAME;
     }
 
