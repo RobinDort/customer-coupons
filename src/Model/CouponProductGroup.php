@@ -20,6 +20,10 @@ class CouponProductGroup extends Group {
         $this->name = self::NAME;
     }
 
+    public function getName() {
+        return $this->name;
+    }
+
     public function setProductType($productTypeID) {
         $this->product_type = $productTypeID;
     }

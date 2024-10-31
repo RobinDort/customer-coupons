@@ -39,28 +39,31 @@ if (!$couponProductTypeCount > 0) {
          */
         $couponProductGroup = new CouponProductGroup();
 
+        // save for debug purpose
+        $couponProductGroup->save();
+
         /**
          * check if product group already exists
          */
-        $dbProductGroupInteraction = new DBProductGroupInteraction();
-        $productGroupCount = $dbProductGroupInteraction->selectProductGroup("Coupons");
+        // $dbProductGroupInteraction = new DBProductGroupInteraction();
+        // $productGroupCount = $dbProductGroupInteraction->selectProductGroup($couponProductGroup->getName());
 
-        if (!$productGroupCount > 0) {
+        // if (!$productGroupCount > 0) {
 
-            // Set product type ID of new product group
-            $couponProductGroup->setProductType($productTypeID);
+        //     // Set product type ID of new product group
+        //     $couponProductGroup->setProductType($productTypeID);
 
-            // Find highest sorting from tl_iso_group table 
-            $highestSorting = $dbProductGroupInteraction->selectMaxSorting();
+        //     // Find highest sorting from tl_iso_group table 
+        //     $highestSorting = $dbProductGroupInteraction->selectMaxSorting();
 
-            // Add 128 (2^7) to attach new group at the bottom of the list.
-            $highestSorting += 128;
-            $couponProductGroup->setSorting($highestSorting);
+        //     // Add 128 (2^7) to attach new group at the bottom of the list.
+        //     $highestSorting += 128;
+        //     $couponProductGroup->setSorting($highestSorting);
 
-            // save the new group
-            $couponProductGroup->save();
+        //     // save the new group
+        //     $couponProductGroup->save();
 
-        }
+        // }
 
     }
 }
