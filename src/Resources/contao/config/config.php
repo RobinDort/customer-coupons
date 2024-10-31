@@ -27,6 +27,8 @@ if (!$couponProductTypeCount > 0) {
      * Create product group for the coupons
      */
     $couponProductGroup = new CouponProductGroup();
+    $couponProductGroup->setProductType(32);
+    $couponProductGroup->setSorting(900);
 
     // save for debug purpose
     $couponProductGroup->save();
