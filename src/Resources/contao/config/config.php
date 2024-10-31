@@ -1,6 +1,8 @@
 <?php
 use RobinDort\CustomerCoupons\Model\CustomRule;
 use RobinDort\CustomerCoupons\Model\CustomRuleRestriction;
+use RobinDort\CustomerCoupons\Backend\Rule\SaveRuleCallback;
+use Contao\DataContainer;
 
 $customRule = new CustomRule();
 $ruleExists = $customRule->checkRuleExists();
@@ -10,19 +12,22 @@ if (!$ruleExists) {
 
     $newRuleID = $customRule->getRuleID();
     if ($newRuleID !== null) {
+        // prepare new restrictions for that rule
 
-        // create a new rule restriction and set the depending table entries. 
-        $customRuleRestriction = new CustomRuleRestriction();
-        $customRuleRestriction->setParentID($newRuleID);
-        // object_id of tl_iso_rule_restrictions will be 1 by default but can be changed later inside the backend.
-        $customRuleRestriction->setObjectID(1);
-        // type of tl_iso_rule_restrictions will be groups by default but can be changed later inside the backend.
-        $customRuleRestriction->setType("groups");
-        // save the new rule restriction when it does not already exist.
-        $ruleRestrictionExists = $customRuleRestriction->checkRuleRestrictionExists();
-        if (!$ruleRestrictionExists) {
-            $customRuleRestriction->save();
-        }
+        // get only the object_id restrictions with ID of 1 by default.
+        $objID = [1];
+        $varValue = serialize($objID);
+
+        // create a new data container and set its properties according to the needed restriction.
+        $dc = new DataContainer();
+        $dc->id = $newRuleID;
+        $dc->table = "tl_iso_rule_restriction";
+        $dc->field = "groups";
+        $dc->activeRecord= new \stdClass();
+        $dc->activeRecord->id = 1;
+
+        $saveRuleCallback = new SaveRuleCallback();
+        $saveRuleCallback->saveRestrictions($varValue, $dc);
 
     }
 }

@@ -1,7 +1,7 @@
 <?php
 namespace RobinDort\CustomerCoupons\Model;
 
-use RobinDort\CustomerCoupons\Database\DBRuleRestrictionInteraction;
+use RobinDort\CustomerCoupons\Backend\Database\DBRuleRestrictionInteraction;
 use Isotope\Model\Rule;
 
 class CustomRuleRestriction extends Rule {

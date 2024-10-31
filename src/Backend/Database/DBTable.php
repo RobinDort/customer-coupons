@@ -1,5 +1,5 @@
 <?php
-namespace RobinDort\CustomerCoupons\Database;
+namespace RobinDort\CustomerCoupons\Backend\Database;
 
 
 abstract class DBTable {

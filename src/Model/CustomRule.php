@@ -2,7 +2,7 @@
 namespace RobinDort\CustomerCoupons\Model;
 
 use Isotope\Model\Rule;
-use RobinDort\CustomerCoupons\Database\DBRuleInteraction;
+use RobinDort\CustomerCoupons\Backend\Database\DBRuleInteraction;
 
 class CustomRule extends Rule {
 
