@@ -2,7 +2,6 @@
 use RobinDort\CustomerCoupons\Model\CustomRule;
 use RobinDort\CustomerCoupons\Model\CustomRuleRestriction;
 use RobinDort\CustomerCoupons\Backend\Rule\SaveRuleCallback;
-use Contao\DataContainer;
 
 $customRule = new CustomRule();
 $ruleExists = $customRule->checkRuleExists();
@@ -19,7 +18,7 @@ if (!$ruleExists) {
         $varValue = serialize($objID);
 
         // create a new data container and set its properties according to the needed restriction.
-        $dc = new DataContainer();
+        $dc = new \stdClass();
         $dc->id = $newRuleID;
         $dc->table = "tl_iso_rule_restriction";
         $dc->field = "groups";
