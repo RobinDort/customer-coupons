@@ -35,54 +35,17 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
 
         // save for debug purpose
         $couponProductGroup->save();
-
-        /**
-         * Set the GLOBAL variable to prevent this code segment from running more than once.
-         */
-        $GLOBALS["INITIAL_SETUP"] = true;
-
-        // Get the new product type ID.
-    // $productTypeID =  $dbProductTypeInteraction->selectProductTypeID($couponProductType->getName());
-
-        /**
-         * Check for successful creation of product type
-         */
-
-       // if ($productTypeID !== -1) {
-
-            // /**
-            //  * Create product group for the coupons
-            //  */
-            // $couponProductGroup = new CouponProductGroup();
-
-            // // save for debug purpose
-            // $couponProductGroup->save();
-
-            /**
-             * check if product group already exists
-             */
-            // $dbProductGroupInteraction = new DBProductGroupInteraction();
-            // $productGroupCount = $dbProductGroupInteraction->selectProductGroup($couponProductGroup->getName());
-
-            // if (!$productGroupCount > 0) {
-
-            //     // Set product type ID of new product group
-            //     $couponProductGroup->setProductType($productTypeID);
-
-            //     // Find highest sorting from tl_iso_group table 
-            //     $highestSorting = $dbProductGroupInteraction->selectMaxSorting();
-
-            //     // Add 128 (2^7) to attach new group at the bottom of the list.
-            //     $highestSorting += 128;
-            //     $couponProductGroup->setSorting($highestSorting);
-
-            //     // save the new group
-            //     $couponProductGroup->save();
-
-            // }
-
-       // }
     }
+
+    /**
+     * Create new page that displays later on newly created product "coupon".
+     */
+
+
+    /**
+     * Set the GLOBAL variable to prevent this code segment from running more than once.
+     */
+    $GLOBALS["INITIAL_SETUP"] = true;
 }
 
 

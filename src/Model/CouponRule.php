@@ -4,7 +4,7 @@ namespace RobinDort\CustomerCoupons\Model;
 use Isotope\Model\Rule;
 use RobinDort\CustomerCoupons\Backend\Database\DBRuleInteraction;
 
-class CustomRule extends Rule {
+class CouponRule extends Rule {
 
     /**
     * Properties extended from Contaos/Isotopes Rule/Model class.
