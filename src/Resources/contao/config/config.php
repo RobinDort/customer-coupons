@@ -23,13 +23,16 @@ if (!$couponProductTypeCount > 0) {
     // save new product type 
     $couponProductType->save();
 
-    $productTypeID =  $couponProductType->id;
+    // Get the new product type ID.
+
+
+    $productTypeID =  $dbProductTypeInteraction->selectProductTypeID($couponProductType->getName());
 
     /**
      * Check for successful creation of product type
      */
 
-    if ($productTypeID !== null) {
+    if ($productTypeID !== -1) {
 
         /**
          * Create product group for the coupons

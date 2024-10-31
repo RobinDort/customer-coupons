@@ -20,6 +20,14 @@ class DBProductTypeInteraction extends DBTable {
 
         return $result["productTypeCount"] ?? 0;
     }
+
+    public function selectProductTypeID($name) {
+        $stmt = "SELECT id FROM " . $this->getTableName() . " WHERE name = '" . $name . "'";
+
+        $result = Database::getInstance()->execute($stmt)->fetchAssoc();
+
+        return $result["id"] ?? -1;
+    }
 }
 
 ?>
