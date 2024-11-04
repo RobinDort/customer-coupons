@@ -44,7 +44,7 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
     /**
      * Create new page that displays later on newly created product "coupon".
      */
-    $couponPage = new CouponPage($couponPageName);
+    $couponPage = new CouponPage();
     
     // Check if the page already exists.
     $dbPageInteraction = new DBPageInteraction();
