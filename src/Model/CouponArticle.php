@@ -43,12 +43,13 @@ class CouponArticle extends ArticleModel {
         $this->title = self::ARTICLE_TITLE;
         $this->time = $unixTime;
         $this->author = 1;
+        $this->published = true;
      }
 
      private function findParentID() {
         // find the parent page and its ID by searching for its title. Same title as the articles.
         $parentPage = PageModel::findByTitle(self::ARTICLE_TITLE);
-        
+
         // Check if $parentPage is a collection or a single model, then return its ID
         if ($parentPage instanceof \Model\Collection) {
             return $parentPage->current()->id ?? 1;
