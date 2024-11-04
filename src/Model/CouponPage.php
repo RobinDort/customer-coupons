@@ -84,6 +84,10 @@ class CouponPage extends PageModel {
      * */
 
    private const PAGE_TITLE = "Coupons";
+   private const PAGE_TYPE = "regular";
+   private const PAGE_ROBOTS = "index,follow";
+   private const PAGE_REDIRECT = "permanent";
+   private const PAGE_SITEMAP = "map_default";
 
 
      public function __construct() {
@@ -98,9 +102,9 @@ class CouponPage extends PageModel {
         $this->title = self::PAGE_TITLE;
         $this->pageTitle = self::PAGE_TITLE;
         $this->alias = strtolower(self::PAGE_TITLE);
-        $this->type = "regular";
-        $this->robots = "index,follow";
-        $this->redirect = "permanent";
+        $this->type = self::PAGE_TYPE;
+        $this->robots = self::PAGE_ROBOTS;
+        $this->redirect = self::PAGE_REDIRECT;
         $this->jumpTo = 0;
         $this->includeLayout = true;
         $this->layout = 2;
@@ -115,7 +119,7 @@ class CouponPage extends PageModel {
          7 => "g5",
          8 => "g6"
         ));
-        $this->sitemap = "map_default";
+        $this->sitemap = self::PAGE_SITEMAP;
         $this->hide = true;
         $this->published = true;
      }
