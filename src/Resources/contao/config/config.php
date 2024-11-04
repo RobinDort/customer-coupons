@@ -24,7 +24,7 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
      * */
     $dbProductTypeInteraction = new DBProductTypeInteraction();
     $couponProductTypeCount = $dbProductTypeInteraction->selectProductType($couponProductType->getName());
-    if (!$couponProductTypeCount > 0) {
+    if ($couponProductTypeCount === 0) {
         // save new product type 
         $couponProductType->save();
 
@@ -47,7 +47,7 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
     // Check if the page already exists
     $dbPageInteraction = new DBPageInteraction();
     $couponPageCount = $dbPageInteraction->selectPage($couponPage->getTitle());
-    if (!$couponPageCount > 0) {
+    if ($couponPageCount === 0) {
         // save the new page
         $couponPage->save();
     }
