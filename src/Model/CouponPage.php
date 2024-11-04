@@ -83,6 +83,7 @@ class CouponPage extends PageModel {
      * @property string  $templateGroup
      * */
 
+   private const PAGE_TITLE = "Coupons";
 
 
      public function __construct() {
@@ -94,8 +95,9 @@ class CouponPage extends PageModel {
         // Set the sorting of the new page directly after the root.
         $this->sorting = $this->pid + 1; 
         $this->tstamp = $unixTime;
-        $this->title = "Coupons";
-        $this->pageTitle = "Coupons";
+        $this->title = self::PAGE_TITLE;
+        $this->pageTitle = self::PAGE_TITLE;
+        $this->alias = strtolower(self::PAGE_TITLE);
         $this->type = "regular";
         $this->robots = "index,follow";
         $this->redirect = "permanent";
