@@ -125,6 +125,7 @@ class CouponPage extends PageModel {
 
 
      public function selfExists() {
+      // Check if the page is already existent.
       $existentPage = PageModel::findByTitle(self::PAGE_TITLE);
       if ($existentPage !== null) {
          return true;

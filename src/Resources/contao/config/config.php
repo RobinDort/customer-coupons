@@ -63,10 +63,9 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
         $couponArticle = new CouponArticle();
 
         // check if article exists
-        $dbArticleInteraction = new DBArticleInteraction();
-        $articleCount = $dbArticleInteraction->selectArticle($couponArticle->getTitle());
+        $articleExists = $couponArticle->selfExists();
 
-        if ($articleCount === 0) {
+        if (!$articleExists) {
             $couponArticle->save();
         }
 

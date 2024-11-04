@@ -49,6 +49,17 @@ class CouponArticle extends ArticleModel {
         $this->published = true;
      }
 
+
+     public function selfExists() {
+        // Check if the article is already existent.
+        $existentArticle = ArticleModel::findByTitle(self::ARTICLE_TITLE);
+        if ($existentArticle !== null) {
+            return true;
+        }
+
+        return false;
+     }
+
      private function findParentID() {
         // find the parent page and its ID by searching for its title. Same title as the articles.
         $parentPage = PageModel::findByTitle(self::ARTICLE_TITLE);
