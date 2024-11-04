@@ -84,7 +84,6 @@ class CouponPage extends PageModel {
      * */
 
 
-     private const COUPON_PAGE_TITLE = "Coupons";
 
      public function __construct() {
         parent::__construct();
@@ -95,7 +94,28 @@ class CouponPage extends PageModel {
         // Set the sorting of the new page directly after the root.
         $this->sorting = $this->pid + 1; 
         $this->tstamp = $unixTime;
-        $this->title = self::COUPON_PAGE_TITLE;
+        $this->title = $GLOBALS['TL_LANG']['MOD']['coupon_page'];
+        $this->pageTitle = $GLOBALS['TL_LANG']['MOD']['coupon_page'];
+        $this->type = "regular";
+        $this->robots = "index,follow";
+        $this->redirect = "permanent";
+        $this->jumpTo = 0;
+        $this->includeLayout = true;
+        $this->layout = 2;
+        $this->chmod = serialize(array(
+         0 => "u1",
+         1 => "u2",
+         2 => "u3",
+         3 => "u4",
+         4 => "u5",
+         5 => "u6",
+         6 => "g4",
+         7 => "g5",
+         8 => "g6"
+        ));
+        $this->sitemap = "map_default";
+        $this->hide = true;
+        $this->published = true;
      }
 
 
