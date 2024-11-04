@@ -90,15 +90,15 @@ class CouponPage extends PageModel {
    private const PAGE_SITEMAP = "map_default";
 
 
-     public function __construct($modelTitle) {
+     public function __construct() {
         parent::__construct();
 
         $unixTime = time();
-        $this->title = $modelTitle;
         
         // Set the sorting of the new page directly after the root.
         $this->sorting = $this->pid + 1; 
         $this->tstamp = $unixTime;
+        $this->title = self::PAGE_TITLE;
         $this->pageTitle = self::PAGE_TITLE;
         $this->alias = strtolower(self::PAGE_TITLE);
         $this->type = self::PAGE_TYPE;

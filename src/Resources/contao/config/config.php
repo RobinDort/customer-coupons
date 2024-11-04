@@ -16,9 +16,6 @@ use RobinDort\CustomerCoupons\Backend\Database\DBArticleInteraction;
 
 if (empty($GLOBALS["INITIAL_SETUP"])) {
 
-    $couponPageName = $GLOBALS["TL_MOD"]["coupon_page"];
-    $couponArticleName = $GLOBALS["TL_MOD"]["coupon_article"];
-
     /**
      * Create new product type for customer coupons.
      */
