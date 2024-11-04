@@ -95,7 +95,6 @@ class CouponPage extends PageModel {
 
         $unixTime = time();
         
-        $this->pid = $this->findParentID();
         // Set the sorting of the new page directly after the root.
         $this->sorting = $this->pid + 1; 
         $this->tstamp = $unixTime;
@@ -132,11 +131,8 @@ class CouponPage extends PageModel {
       return $this->id;
      }
 
-
-     private function findParentID() {
-        $dbPageInteraction = new DBPageInteraction();
-        $rootID = $dbPageInteraction->selectActiveRootID();
-        return $rootID;
+     public function setParentPageID($parentPageID) {
+        $this->pid = $parentPageID;
      }
 }
 

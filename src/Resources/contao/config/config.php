@@ -46,10 +46,15 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
      */
     $couponPage = new CouponPage();
     
-    // Check if the page already exists
+    // Check if the page already exists.
     $dbPageInteraction = new DBPageInteraction();
     $couponPageCount = $dbPageInteraction->selectPage($couponPage->getTitle());
+
     if ($couponPageCount === 0) {
+        // Get parent page ID.
+        $parentPageID = $dbPageInteraction->selectActiveRootID();
+        $couponPage->setParentPageID($parentPageID);
+
         // save the new page
         $couponPage->save();
 
@@ -60,6 +65,7 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
         // check if article exists
         $dbArticleInteraction = new DBArticleInteraction();
         $articleCount = $dbArticleInteraction->selectArticle($couponArticle->getTitle());
+        
         if ($articleCount === 0) {
             $couponArticle->save();
         }
