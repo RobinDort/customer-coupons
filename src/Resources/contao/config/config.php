@@ -1,9 +1,11 @@
 <?php
 use RobinDort\CustomerCoupons\Model\CouponProductType;
 use RobinDort\CustomerCoupons\Model\CouponProductGroup;
+use RobinDort\CustomerCoupons\Model\CouponPage;
 
 use RobinDort\CustomerCoupons\Backend\Database\DBProductTypeInteraction;
 use RobinDort\CustomerCoupons\Backend\Database\DBProductGroupInteraction;
+use RobinDort\CustomerCoupons\Backend\Database\DBPageInteraction;
 
 // use RobinDort\CustomerCoupons\Model\CustomRule;
 // use RobinDort\CustomerCoupons\Backend\Database\DBRuleRestrictionInteraction;
@@ -40,7 +42,15 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
     /**
      * Create new page that displays later on newly created product "coupon".
      */
-
+    $couponPage = new CouponPage();
+    
+    // Check if the page already exists
+    $dbPageInteraction = new DBPageInteraction();
+    $couponPageCount = $dbPageInteraction->selectPage($couponPage->getTitle());
+    if (!$couponPageCount > 0) {
+        // save the new page
+        $couponPage->save();
+    }
 
     /**
      * Set the GLOBAL variable to prevent this code segment from running more than once.

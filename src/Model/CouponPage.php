@@ -118,6 +118,10 @@ class CouponPage extends PageModel {
         $this->published = true;
      }
 
+     public function getTitle() {
+      return $this->title;
+     }
+
 
      private function findParentID() {
         $dbPageInteraction = new DBPageInteraction();

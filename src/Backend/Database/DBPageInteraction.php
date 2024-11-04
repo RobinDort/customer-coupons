@@ -20,6 +20,13 @@ class DBPageInteraction extends DBTable {
 
         return $result["id"] ?? 1;
     }
+
+    public function selectPage($name) {
+        $stmt = "SELECT COUNT(*) as pageCount FROM " . $this->getTableName() . " WHERE title='" . $name . "'";
+        $result = Database::getInstance()->execute($stmt)->fetchAssoc();
+
+        return $result["pageCount"] ?? 0;
+    }
 }
 
 ?>
