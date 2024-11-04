@@ -41,6 +41,7 @@ class CouponArticle extends ArticleModel {
         $unixTime = time();
         $this->pid = $this->findParentID();
         $this->title = self::ARTICLE_TITLE;
+        $this->alias = strtolower(self::ARTICLE_TITLE);
         $this->time = $unixTime;
         $this->author = 1;
         $this->published = true;
