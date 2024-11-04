@@ -2,6 +2,7 @@
 namespace RobinDort\CustomerCoupons\Model;
 
 use Contao\ArticleModel;
+use Contao\PageModel;
 
 class CouponArticle extends ArticleModel {
 
@@ -34,14 +35,21 @@ class CouponArticle extends ArticleModel {
 
      private const ARTICLE_TITLE = "Coupons";
 
-     public function __construct($parentID) {
+     public function __construct() {
         parent::__construct();
 
         $unixTime = time();
-        $this->pid = $parentID;
+        $this->pid = $this->findParentID();
         $this->title = self::ARTICLE_TITLE;
         $this->time = $unixTime;
         $this->author = 1;
+     }
+
+     private function findParentID() {
+        // find the parent page and its ID by searching for its title. Same title as the articles.
+        $parentPage = PageModel::findByTitle(self::ARTICLE_TITLE);
+        return $parentPage->id ?? 1;
+        
      }
 
      public function getTitle() {

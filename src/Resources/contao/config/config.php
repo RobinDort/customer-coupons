@@ -55,7 +55,7 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
 
 
         // create an article inside the new page to handle coupon content.
-        $couponArticle = new CouponArticle($couponPage->getID());
+        $couponArticle = new CouponArticle();
 
         // check if article exists
         $dbArticleInteraction = new DBArticleInteraction();
