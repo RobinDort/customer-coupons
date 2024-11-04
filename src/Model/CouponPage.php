@@ -123,6 +123,16 @@ class CouponPage extends PageModel {
         $this->published = true;
      }
 
+
+     public function selfExists() {
+      $existentPage = PageModel::findByTitle(self::PAGE_TITLE);
+      if ($existentPage !== null) {
+         return true;
+      }
+
+      return false;
+     }
+
      public function getTitle() {
       return $this->title;
      }
