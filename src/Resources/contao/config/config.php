@@ -48,6 +48,7 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
     
     // Check if the page already exists.
     $pageExists = $couponPage->selfExists();
+    $dbPageInteraction = new DBPageInteraction();
 
     if (!$pageExists) {
         // Get parent page ID.
