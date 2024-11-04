@@ -83,10 +83,19 @@ class CouponPage extends PageModel {
      * @property string  $templateGroup
      * */
 
+
+     private const COUPON_PAGE_TITLE = "Coupons";
+
      public function __construct() {
         parent::__construct();
+
+        $unixTime = time();
         
         $this->pid = findParentID();
+        // Set the sorting of the new page directly after the root.
+        $this->sorting = $this->pid + 1; 
+        $this->tstamp = $unixTime;
+        $this->title = self::COUPON_PAGE_TITLE;
      }
 
 
