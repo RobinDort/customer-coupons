@@ -5,6 +5,10 @@
                 <source>Coupons</source>
                 <target>Gutscheine</target>
             </trans-unit>
+            <trans-unit id="MOD.coupon_article">
+                <source>Coupons</source>
+                <target>Gutscheine</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

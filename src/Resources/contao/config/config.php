@@ -16,6 +16,9 @@ use RobinDort\CustomerCoupons\Backend\Database\DBArticleInteraction;
 
 if (empty($GLOBALS["INITIAL_SETUP"])) {
 
+    $couponPageName = $GLOBALS["TL_MOD"]["coupon_page"];
+    $couponArticleName = $GLOBALS["TL_MOD"]["coupon_article"];
+
     /**
      * Create new product type for customer coupons.
      */
@@ -44,7 +47,7 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
     /**
      * Create new page that displays later on newly created product "coupon".
      */
-    $couponPage = new CouponPage();
+    $couponPage = new CouponPage($couponPageName);
     
     // Check if the page already exists.
     $dbPageInteraction = new DBPageInteraction();
@@ -65,7 +68,7 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
         // check if article exists
         $dbArticleInteraction = new DBArticleInteraction();
         $articleCount = $dbArticleInteraction->selectArticle($couponArticle->getTitle());
-        
+
         if ($articleCount === 0) {
             $couponArticle->save();
         }
