@@ -7,7 +7,6 @@ use RobinDort\CustomerCoupons\Model\CouponArticle;
 use RobinDort\CustomerCoupons\Backend\Database\DBProductTypeInteraction;
 use RobinDort\CustomerCoupons\Backend\Database\DBProductGroupInteraction;
 use RobinDort\CustomerCoupons\Backend\Database\DBPageInteraction;
-use RobinDort\CustomerCoupons\Backend\Database\DBArticleInteraction;
 
 // use RobinDort\CustomerCoupons\Model\CustomRule;
 // use RobinDort\CustomerCoupons\Backend\Database\DBRuleRestrictionInteraction;
