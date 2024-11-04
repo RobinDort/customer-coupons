@@ -40,6 +40,8 @@ class CouponArticle extends ArticleModel {
 
         $unixTime = time();
         $this->pid = $this->findParentID();
+        $this->sorting = 128;
+        $this->tstamp = $unixTime;
         $this->title = self::ARTICLE_TITLE;
         $this->alias = strtolower(self::ARTICLE_TITLE);
         $this->time = $unixTime;
