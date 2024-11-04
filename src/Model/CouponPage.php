@@ -90,7 +90,7 @@ class CouponPage extends PageModel {
 
         $unixTime = time();
         
-        $this->pid = findParentID();
+        $this->pid = $this->findParentID();
         // Set the sorting of the new page directly after the root.
         $this->sorting = $this->pid + 1; 
         $this->tstamp = $unixTime;
