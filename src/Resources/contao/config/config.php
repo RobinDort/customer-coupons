@@ -2,10 +2,12 @@
 use RobinDort\CustomerCoupons\Model\CouponProductType;
 use RobinDort\CustomerCoupons\Model\CouponProductGroup;
 use RobinDort\CustomerCoupons\Model\CouponPage;
+use RobinDort\CustomerCoupons\Model\CouponArticle;
 
 use RobinDort\CustomerCoupons\Backend\Database\DBProductTypeInteraction;
 use RobinDort\CustomerCoupons\Backend\Database\DBProductGroupInteraction;
 use RobinDort\CustomerCoupons\Backend\Database\DBPageInteraction;
+use RobinDort\CustomerCoupons\Backend\Database\DBArticleInteraction;
 
 // use RobinDort\CustomerCoupons\Model\CustomRule;
 // use RobinDort\CustomerCoupons\Backend\Database\DBRuleRestrictionInteraction;
@@ -53,7 +55,14 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
 
 
         // create an article inside the new page to handle coupon content.
-        
+        $couponArticle = new CouponArticle($couponPage->getID());
+
+        // check if article exists
+        $dbArticleInteraction = new DBArticleInteraction();
+        $articleCount = $dbArticleInteraction->selectArticle($couponArticle->getTitle());
+        if ($articleCount === 0) {
+            $couponArticle->save();
+        }
 
         // create content inside the new article and set the isotope module in order to place products inside there
     }

@@ -32,14 +32,20 @@ class CouponArticle extends ArticleModel {
      * @property string  $classes
      */
 
-     public function __construct() {
+     private const ARTICLE_TITLE = "Coupons";
+
+     public function __construct($parentID) {
         parent::__construct();
 
         $unixTime = time();
+        $this->pid = $parentID;
+        $this->title = self::ARTICLE_TITLE;
+        $this->time = $unixTime;
+        $this->author = 1;
      }
 
-     private function findParentID() {
-        
+     public function getTitle() {
+        return $this->title;
      }
 }
 

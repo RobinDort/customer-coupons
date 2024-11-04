@@ -128,6 +128,10 @@ class CouponPage extends PageModel {
       return $this->title;
      }
 
+     public function getID() {
+      return $this->id;
+     }
+
 
      private function findParentID() {
         $dbPageInteraction = new DBPageInteraction();
