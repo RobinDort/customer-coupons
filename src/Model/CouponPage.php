@@ -94,8 +94,8 @@ class CouponPage extends PageModel {
         // Set the sorting of the new page directly after the root.
         $this->sorting = $this->pid + 1; 
         $this->tstamp = $unixTime;
-        $this->title = $GLOBALS['TL_LANG']['MOD']['coupon_page'];
-        $this->pageTitle = $GLOBALS['TL_LANG']['MOD']['coupon_page'];
+        $this->title = "Coupons";
+        $this->pageTitle = "Coupons";
         $this->type = "regular";
         $this->robots = "index,follow";
         $this->redirect = "permanent";
