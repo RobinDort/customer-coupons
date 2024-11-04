@@ -50,6 +50,12 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
     if ($couponPageCount === 0) {
         // save the new page
         $couponPage->save();
+
+
+        // create an article inside the new page to handle coupon content.
+        
+
+        // create content inside the new article and set the isotope module in order to place products inside there
     }
 
     /**
