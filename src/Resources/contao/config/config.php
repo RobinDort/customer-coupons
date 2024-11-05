@@ -1,15 +1,9 @@
 <?php
-use RobinDort\CustomerCoupons\Model\CouponProductType;
-use RobinDort\CustomerCoupons\Model\CouponPage;
-use RobinDort\CustomerCoupons\Model\CouponArticle;
-use RobinDort\CustomerCoupons\Model\CouponProduct;
-/**
- * Register models
+use RobinDort\CustomerCoupons\Setup\InitialSetup;
+/*
+ * Register hook
  */
-$GLOBALS['TL_MODELS']['tl_iso_producttype'] = CouponProductType::class;
-$GLOBALS['TL_MODELS']['tl_page'] = CouponPage::class; 
-$GLOBALS['TL_MODELS']['tl_article'] = CouponArticle::class;
-$GLOBALS['TL_MODELS']['tl_iso_product'] = CouponProduct::class;
+$GLOBALS['TL_HOOKS']['initializeSystem'][] = [InitialSetup::class, 'runSetup'];
 
 
 // @TODO -> Rule usage -> use it inside the frontend template later on.
