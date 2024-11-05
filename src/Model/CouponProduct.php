@@ -106,6 +106,86 @@ class CouponProduct extends Product {
         return $this->sku;
       }
 
+      /**
+       * @inheritdoc
+       */
+      public function isAvailableInFrontend() {
+        return true;
+      }
+
+      /**
+       * @inheritdoc
+       */
+      public function isAvailableForCollection(IsotopeProductCollection $objCollection) {}
+
+      /**
+       * @inheritdoc
+       */
+      public function isPublished() { 
+        return $this->published;
+      }
+
+      /**
+       * @inheritdoc
+       */
+      public function isNew() {}
+
+      /**
+       * @inheritdoc
+       */
+      public function isExemptFromShipping() {}
+
+      /**
+       * @inheritdoc
+       */
+      public function hasVariants() {}
+
+      /**
+       * @inheritdoc
+       */
+      public function getVariantIds() {}
+
+      /**
+       * @inheritdoc
+       */
+      public function isVariant() {}
+
+      /**
+       * @inheritdoc
+       */
+      public function hasVariantPrices() {}
+
+      /**
+       * @inheritdoc
+       */
+      public function hasAdvancedPrices() {}
+
+      /**
+       * @inheritdoc
+       */
+      public function getPrice(IsotopeProductCollection $objCollection = null) {}
+
+       /**
+       * @inheritdoc
+       */
+      public function getMinimumQuantity() {}
+
+      /**
+       * @inheritdoc
+       */
+      public function getOptions() {}
+
+      /**
+       * @inheritdoc
+       */
+      public function generate(array $arrConfig) {}
+
+      /**
+       * @inheritdoc
+       */
+      public function generateUrl(PageModel $objJumpTo = null/*, bool $absolute = false*/) {}
+      
+
 
      public function setPages($pagesArr) {
         $this->pages = serialize($pagesArr);
