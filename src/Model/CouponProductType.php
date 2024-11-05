@@ -47,7 +47,7 @@ class CouponProductType extends ProductType {
          array('name'=>'start', 'enabled'=>1),
          array('name'=>'stop', 'enabled'=>1),
      );
-     private const COUPON_ATTRIBTES2 = array (
+     private const COUPON_ATTRIBUTES2 = array (
       'type' => [
           'enabled' => '1',
           'name' => 'type',
