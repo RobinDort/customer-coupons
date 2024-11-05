@@ -3,6 +3,7 @@ use RobinDort\CustomerCoupons\Model\CouponProductType;
 use RobinDort\CustomerCoupons\Model\CouponProductGroup;
 use RobinDort\CustomerCoupons\Model\CouponPage;
 use RobinDort\CustomerCoupons\Model\CouponArticle;
+use RobinDort\CustomerCoupons\Model\CouponProduct;
 
 use RobinDort\CustomerCoupons\Backend\Database\DBProductTypeInteraction;
 use RobinDort\CustomerCoupons\Backend\Database\DBProductGroupInteraction;
@@ -46,10 +47,9 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
     $couponPage = new CouponPage();
     
     // Check if the page already exists.
-    $pageExists = $couponPage->selfExists();
     $dbPageInteraction = new DBPageInteraction();
 
-    if (!$pageExists) {
+    if (!$couponPage->selfExists()) {
         // Get parent page ID.
         $parentPageID = $dbPageInteraction->selectActiveRootID();
         $couponPage->setParentPageID($parentPageID);
@@ -62,13 +62,16 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
         $couponArticle = new CouponArticle();
 
         // check if article exists
-        $articleExists = $couponArticle->selfExists();
-
-        if (!$articleExists) {
+        if (!$couponArticle->selfExists()) {
             $couponArticle->save();
         }
 
-        // create content inside the new article and set the isotope module in order to place products inside there
+        // Create new isotope product with different prices to represent the coupons.
+        $couponProduct = new CouponProduct();
+        if ($couponProduct->selfExists()) {
+            $couponProduct->save();
+        }
+
     }
 
     /**
