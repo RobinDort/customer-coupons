@@ -68,10 +68,10 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
         }
 
         // Create new isotope product with different prices to represent the coupons.
-        $couponProduct = new CouponProduct();
+        $couponProduct = new CouponProduct($couponProductType->getID(), $couponPage->getID());
         $dbProductInteraction = new DBProductInteraction();
         $productCount = $dbProductInteraction->selectProduct($couponProduct->getAlias());
-        
+
         if ($productCount === 0) {
             $couponProduct->save();
         }
