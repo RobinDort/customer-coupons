@@ -7,7 +7,7 @@ class CouponProductGroup extends Group {
 
     private const NAME = "Coupons";
 
-    private $product_type;
+    private $productType;
     private $sorting;
 
     public function __construct() {
@@ -23,9 +23,7 @@ class CouponProductGroup extends Group {
     }
 
     public function setProductType($productTypeID) {
-        if (isset($this->arrData['product_type'])) {
-            $this->product_type = $productTypeID;
-        }
+        $this->productType = $productTypeID;
     }
 
     public function setSorting($sorting) {

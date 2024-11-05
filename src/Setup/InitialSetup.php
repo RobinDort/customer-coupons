@@ -71,15 +71,23 @@ class InitialSetup {
             }
     
             // Create new isotope product with different prices to represent the coupons.
-            $couponProduct = new CouponProduct($couponProductType->id, $couponPage->id);
+            $couponProduct = new CouponProduct();
             $dbProductInteraction = new DBProductInteraction();
             $productCount = $dbProductInteraction->selectProduct($couponProduct->getAlias());
     
             if ($productCount === 0) {
-                $couponProduct->save();
-    
                 // register the new product type in order to use it.
                 TypeAgent::registerModelType($couponProductType->getName(), CouponProduct::class);
+                
+                $couponProductOrderPages = array(
+                    "0" => 171
+                );
+                $couponProduct->setType($couponProductType->id);
+                $couponProduct->setPages($couponProductOrderPages);
+                $couponProduct->setOrderPages($couponProductOrderPages);
+
+                $couponProduct->save();
+    
             }
     
         }

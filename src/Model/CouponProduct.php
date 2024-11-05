@@ -41,24 +41,30 @@ class CouponProduct extends Product {
      private const PRODUCT_NAME = "Geschenkgutschein";
      private const PRODUCT_DESCRIPTION = "Geschenkgutschein, einzulösen in unserem Shop";
 
-     public function __construct($productTypeID, $productPageID) {
+     public function __construct() {
         parent::__construct();
 
         $unixTime = time();
+        
         $this->pid = 0;
         $this->tstamp = $unixTime;
         $this->dateAdded = $unixTime;
-        $this->type = 33;
-        $this->pages = serialize(array(
-            "0" => 171
-        ));
-        $this->orderPages = serialize(array(
-            "0" => 171
-        ));
         $this->alias = strtolower(self::PRODUCT_NAME);
         $this->name = self::PRODUCT_NAME;
         $this->description = self::PRODUCT_DESCRIPTION;
         $this->published = true;
+     }
+
+     public function setType($typeID) {
+        $this->type = $typeID;
+     }
+
+     public function setPages($pagesArr) {
+        $this->pages = serialize($pagesArr);
+     }
+
+     public function setOrderPages($orderPagesArr) {
+        $this->orderPages = serialize($orderPages);
      }
 
      public function getAlias() {
