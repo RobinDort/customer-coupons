@@ -46,12 +46,12 @@ class CouponProduct extends Product {
         $this->tstamp = $unixTime;
         $this->dateAdded = $unixTime;
         $this->type = 32;
-        $this->pages = array(
+        $this->pages = serialize(array(
             "0" => 171
-        );
-        $this->orderPages = array(
+        ));
+        $this->orderPages = serialize(array(
             "0" => 171
-        );
+        ));
         $this->alias = strtolower(self::PRODUCT_NAME);
         $this->name = self::PRODUCT_NAME;
         $this->description = self::PRODUCT_DESCRIPTION;
