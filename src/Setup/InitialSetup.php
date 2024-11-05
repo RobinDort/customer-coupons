@@ -14,81 +14,74 @@ use RobinDort\CustomerCoupons\Backend\Database\DBProductInteraction;
 
 class InitialSetup {
     public function runSetup() {
-        if (empty($GLOBALS["INITIAL_SETUP"])) {
+        
+        /**
+         * Create new product type for customer coupons.
+         */
+        $couponProductType = new CouponProductType();
+    
+        /** 
+         * Check if the coupon product type exists.
+         * */
+        $dbProductTypeInteraction = new DBProductTypeInteraction();
+        $couponProductTypeCount = $dbProductTypeInteraction->selectProductType($couponProductType->getName());
+        if ($couponProductTypeCount === 0) {
+            // save new product type 
+            $couponProductType->save();
+    
 
             /**
-             * Create new product type for customer coupons.
+             * Create product group for the coupons
              */
-            $couponProductType = new CouponProductType();
-        
-            /** 
-             * Check if the coupon product type exists.
-             * */
-            $dbProductTypeInteraction = new DBProductTypeInteraction();
-            $couponProductTypeCount = $dbProductTypeInteraction->selectProductType($couponProductType->getName());
-            if ($couponProductTypeCount === 0) {
-                // save new product type 
-                $couponProductType->save();
-        
+            $couponProductGroup = new CouponProductGroup();
+            $dbProductGroupInteraction = new DBProductGroupInteraction();
 
-                /**
-                 * Create product group for the coupons
-                 */
-                $couponProductGroup = new CouponProductGroup();
-                $dbProductGroupInteraction = new DBProductGroupInteraction();
-
-                if ($dbProductGroupInteraction->selectProductGroup($couponProductGroup->getName()) === 0) {
-                    $couponProductGroup->setProductType($couponProductType->id);
-                    $couponProductGroup->setSorting(900);
-            
-                    // save for debug purpose
-                    $couponProductGroup->save();
-                }
+            if ($dbProductGroupInteraction->selectProductGroup($couponProductGroup->getName()) === 0) {
+                $couponProductGroup->setProductType($couponProductType->id);
+                $couponProductGroup->setSorting(900);
+        
+                // save group
+                $couponProductGroup->save();
             }
+        }
+    
+        /**
+         * Create new page that displays later on newly created product "coupon".
+         */
+        $couponPage = new CouponPage();
         
-            /**
-             * Create new page that displays later on newly created product "coupon".
-             */
-            $couponPage = new CouponPage();
-            
-            // Check if the page already exists.
-            $dbPageInteraction = new DBPageInteraction();
-        
-            if (!$couponPage->selfExists()) {
-                // Get parent page ID.
-                $parentPageID = $dbPageInteraction->selectActiveRootID();
-                $couponPage->setParentPageID($parentPageID);
-        
-                // save the new page
-                $couponPage->save();
-        
-        
-                // create an article inside the new page to handle coupon content.
-                $couponArticle = new CouponArticle();
-        
-                // check if article exists
-                if (!$couponArticle->selfExists()) {
-                    $couponArticle->save();
-                }
-        
-                // Create new isotope product with different prices to represent the coupons.
-                $couponProduct = new CouponProduct($couponProductType->id, $couponPage->id);
-                $dbProductInteraction = new DBProductInteraction();
-                $productCount = $dbProductInteraction->selectProduct($couponProduct->getAlias());
-        
-                if ($productCount === 0) {
-                    $couponProduct->save();
-        
-                     // register the new product type in order to use it.
-                    TypeAgent::registerModelType($couponProductType->getName(), CouponProduct::class);
-                }
-        
+        // Check if the page already exists.
+        $dbPageInteraction = new DBPageInteraction();
+    
+        if (!$couponPage->selfExists()) {
+            // Get parent page ID.
+            $parentPageID = $dbPageInteraction->selectActiveRootID();
+            $couponPage->setParentPageID($parentPageID);
+    
+            // save the new page
+            $couponPage->save();
+    
+    
+            // create an article inside the new page to handle coupon content.
+            $couponArticle = new CouponArticle();
+    
+            // check if article exists
+            if (!$couponArticle->selfExists()) {
+                $couponArticle->save();
             }
-        
-            /**
-             * Set the GLOBAL variable to prevent this code segment from running more than once.
-             */
-            $GLOBALS["INITIAL_SETUP"] = true;
+    
+            // Create new isotope product with different prices to represent the coupons.
+            $couponProduct = new CouponProduct($couponProductType->id, $couponPage->id);
+            $dbProductInteraction = new DBProductInteraction();
+            $productCount = $dbProductInteraction->selectProduct($couponProduct->getAlias());
+    
+            if ($productCount === 0) {
+                $couponProduct->save();
+    
+                // register the new product type in order to use it.
+                TypeAgent::registerModelType($couponProductType->getName(), CouponProduct::class);
+            }
+    
         }
 
     }
