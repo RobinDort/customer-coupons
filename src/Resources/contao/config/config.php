@@ -8,6 +8,7 @@ use RobinDort\CustomerCoupons\Model\CouponProduct;
 use RobinDort\CustomerCoupons\Backend\Database\DBProductTypeInteraction;
 use RobinDort\CustomerCoupons\Backend\Database\DBProductGroupInteraction;
 use RobinDort\CustomerCoupons\Backend\Database\DBPageInteraction;
+use RobinDort\CustomerCoupons\Backend\Database\DBProductInteraction;
 
 // use RobinDort\CustomerCoupons\Model\CustomRule;
 // use RobinDort\CustomerCoupons\Backend\Database\DBRuleRestrictionInteraction;
@@ -68,7 +69,10 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
 
         // Create new isotope product with different prices to represent the coupons.
         $couponProduct = new CouponProduct();
-        if ($couponProduct->selfExists()) {
+        $dbProductInteraction = new DBProductInteraction();
+        $productCount = $dbProductInteraction->selectProduct($couponProduct->getAlias());
+        
+        if ($productCount === 0) {
             $couponProduct->save();
         }
 

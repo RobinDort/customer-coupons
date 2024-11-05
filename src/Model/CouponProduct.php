@@ -58,13 +58,10 @@ class CouponProduct extends Product {
         $this->published = true;
      }
 
-     public function selfExists() {
-        $existentProduct = Product::findPublishedByIdOrAlias(strtolower(self::PRODUCT_NAME));
-        if ($existentProduct !== null) {
-            return true;
-        }
-        return false;
+     public function getAlias() {
+        return $this->alias;
      }
+
 }
 
 ?>
