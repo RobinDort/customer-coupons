@@ -10,6 +10,8 @@ use RobinDort\CustomerCoupons\Backend\Database\DBProductGroupInteraction;
 use RobinDort\CustomerCoupons\Backend\Database\DBPageInteraction;
 use RobinDort\CustomerCoupons\Backend\Database\DBProductInteraction;
 
+use Isotope\Model\Attribute\TypeAgent;
+
 // use RobinDort\CustomerCoupons\Model\CustomRule;
 // use RobinDort\CustomerCoupons\Backend\Database\DBRuleRestrictionInteraction;
 // use RobinDort\CustomerCoupons\Backend\Rule\SaveRuleCallback;
@@ -30,6 +32,9 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
     if ($couponProductTypeCount === 0) {
         // save new product type 
         $couponProductType->save();
+
+        // register the new product type in order to use it.
+        TypeAgent::registerModelType($couponProductType->getName(), CouponProductType::class);
 
         /**
          * Create product group for the coupons
