@@ -37,7 +37,7 @@ class CouponProduct extends Product {
      */
 
      private const PRODUCT_NAME = "Geschenkgutschein";
-     private const PRODUCT_DESCRIPTION = "<p class='p1'><span class='s1'><strong>Geschenkgutschein</strong>, einzulösen in unserem Shop</span></p>";
+     private const PRODUCT_DESCRIPTION = "Geschenkgutschein, einzulösen in unserem Shop";
 
      public function __construct($productTypeID, $productPageID) {
         parent::__construct();

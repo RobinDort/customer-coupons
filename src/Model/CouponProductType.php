@@ -67,13 +67,21 @@ class CouponProductType extends ProductType {
           'mandatory' => '',
           'position' => 3,
       ],
+      'description' => [
+          'enabled' => '1',
+          'name' => 'name',
+          'legend' => 'general_legend',
+          'tl_class' => '',
+          'mandatory' => '',
+          'position' => 4,
+      ],
       'availability' => [
           'enabled' => '1',
           'name' => 'availability',
           'legend' => 'general_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 4,
+          'position' => 5,
       ],
       'price' => [
           'enabled' => '1',
@@ -81,7 +89,7 @@ class CouponProductType extends ProductType {
           'legend' => 'pricing_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 5,
+          'position' => 6,
       ],
       'images' => [
           'enabled' => '1',
@@ -89,7 +97,7 @@ class CouponProductType extends ProductType {
           'legend' => 'media_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 6,
+          'position' => 7,
       ],
       'published' => [
           'enabled' => '1',
@@ -97,7 +105,7 @@ class CouponProductType extends ProductType {
           'legend' => 'publish_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 7,
+          'position' => 8,
       ],
       'start' => [
           'enabled' => '1',
@@ -105,7 +113,7 @@ class CouponProductType extends ProductType {
           'legend' => 'publish_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 8,
+          'position' => 9,
       ],
       'stop' => [
           'enabled' => '1',
@@ -113,7 +121,7 @@ class CouponProductType extends ProductType {
           'legend' => 'publish_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 9,
+          'position' => 10,
       ],
       'location' => [
           'enabled' => '1',
@@ -121,7 +129,7 @@ class CouponProductType extends ProductType {
           'legend' => 'options_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 10,
+          'position' => 11,
       ],
       'pickup_time' => [
           'enabled' => '1',
@@ -129,7 +137,7 @@ class CouponProductType extends ProductType {
           'legend' => 'options_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 11,
+          'position' => 12,
       ],
       'description' => [
           'enabled' => '',
@@ -137,7 +145,7 @@ class CouponProductType extends ProductType {
           'legend' => 'general_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 12,
+          'position' => 13,
       ],
       'sku' => [
           'enabled' => '',
@@ -145,7 +153,7 @@ class CouponProductType extends ProductType {
           'legend' => 'general_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 13,
+          'position' => 14,
       ],
       'teaser' => [
           'enabled' => '',
@@ -153,7 +161,7 @@ class CouponProductType extends ProductType {
           'legend' => 'general_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 14,
+          'position' => 15,
       ],
       'gtin' => [
           'enabled' => '',
@@ -161,7 +169,7 @@ class CouponProductType extends ProductType {
           'legend' => 'general_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 15,
+          'position' => 16,
       ],
       'tracks' => [
           'enabled' => '',
@@ -169,7 +177,7 @@ class CouponProductType extends ProductType {
           'legend' => 'general_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 16,
+          'position' => 17,
       ],
       'date' => [
           'enabled' => '',
@@ -177,7 +185,7 @@ class CouponProductType extends ProductType {
           'legend' => 'general_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 17,
+          'position' => 18,
       ],
       'contao' => [
           'enabled' => '',
@@ -185,7 +193,7 @@ class CouponProductType extends ProductType {
           'legend' => 'general_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 18,
+          'position' => 19,
       ],
       'featured' => [
           'enabled' => '',
@@ -193,7 +201,7 @@ class CouponProductType extends ProductType {
           'legend' => 'general_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 19,
+          'position' => 20,
       ],
       'baseprice' => [
           'enabled' => '',
@@ -201,7 +209,7 @@ class CouponProductType extends ProductType {
           'legend' => 'pricing_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 20,
+          'position' => 21,
       ],
       'meta_title' => [
           'enabled' => '',
@@ -209,7 +217,7 @@ class CouponProductType extends ProductType {
           'legend' => 'meta_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 21,
+          'position' => 22,
       ],
       'meta_description' => [
           'enabled' => '',
@@ -217,7 +225,7 @@ class CouponProductType extends ProductType {
           'legend' => 'meta_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 22,
+          'position' => 23,
       ],
       'meta_keywords' => [
           'enabled' => '',
@@ -225,7 +233,7 @@ class CouponProductType extends ProductType {
           'legend' => 'meta_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 23,
+          'position' => 24,
       ],
       'shipping_weight' => [
           'enabled' => '',
@@ -233,7 +241,7 @@ class CouponProductType extends ProductType {
           'legend' => 'shipping_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 24,
+          'position' => 25,
       ],
       'shipping_exempt' => [
           'enabled' => '',
@@ -241,7 +249,7 @@ class CouponProductType extends ProductType {
           'legend' => 'shipping_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 25,
+          'position' => 26,
       ],
       'shipping_pickup' => [
           'enabled' => '',
@@ -249,7 +257,7 @@ class CouponProductType extends ProductType {
           'legend' => 'shipping_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 26,
+          'position' => 27,
       ],
       'shipping_price' => [
           'enabled' => '',
@@ -257,7 +265,7 @@ class CouponProductType extends ProductType {
           'legend' => 'shipping_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 27,
+          'position' => 28,
       ],
       'protected' => [
           'enabled' => '',
@@ -265,7 +273,7 @@ class CouponProductType extends ProductType {
           'legend' => 'expert_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 28,
+          'position' => 29,
       ],
       'guests' => [
           'enabled' => '',
@@ -273,7 +281,7 @@ class CouponProductType extends ProductType {
           'legend' => 'expert_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 29,
+          'position' => 30,
       ],
       'cssID' => [
           'enabled' => '',
@@ -281,7 +289,7 @@ class CouponProductType extends ProductType {
           'legend' => 'expert_legend',
           'tl_class' => '',
           'mandatory' => '',
-          'position' => 30,
+          'position' => 31,
       ],
    );
 
