@@ -36,13 +36,13 @@ class InitialSetup {
             $couponProductGroup = new CouponProductGroup();
             $dbProductGroupInteraction = new DBProductGroupInteraction();
 
-            //if ($dbProductGroupInteraction->selectProductGroup($couponProductGroup->getName()) === 0) {
+            if ($dbProductGroupInteraction->selectProductGroup($couponProductGroup->getName()) === 0) {
                 $couponProductGroup->setProductType($couponProductType->getID());
                 $couponProductGroup->setSorting(900);
         
                 // save group
                 $couponProductGroup->save();
-           // }
+            }
         }
     
         /**
