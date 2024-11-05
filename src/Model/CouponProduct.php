@@ -45,7 +45,7 @@ class CouponProduct extends Product {
         parent::__construct();
 
         $unixTime = time();
-        
+
         $this->pid = 0;
         $this->tstamp = $unixTime;
         $this->dateAdded = $unixTime;
@@ -55,9 +55,57 @@ class CouponProduct extends Product {
         $this->published = true;
      }
 
+
+     /**
+      * @inheritdoc
+      */
+     public function getCategories($blnPublished = false) {}
+
+     /**
+      * @inheritdoc
+      */
+     public function getId() {
+        return $this->id;
+     }
+
+     /**
+      * @inheritdoc
+      */
+     public function getProductId() {
+        return $this->pid;
+     }
+
      public function setType($typeID) {
         $this->type = $typeID;
      }
+
+     /**
+      * @inheritdoc
+      */
+     public function getFormId(){}
+
+
+     /**
+      * @inheritdoc
+      */
+     public function getType() {
+        return $this->type;
+     }
+
+     /**
+      * @inheritdoc
+      */
+      public function getName() {
+        return $this->name;
+      }
+
+      /**
+       * @inheritdoc
+       */
+      public function getSku() {
+        return $this->sku;
+      }
+
 
      public function setPages($pagesArr) {
         $this->pages = serialize($pagesArr);
