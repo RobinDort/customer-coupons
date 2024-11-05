@@ -2,6 +2,7 @@
 namespace RobinDort\CustomerCoupons\Model;
 
 use Isotope\Model\Product;
+use Isotope\Model\IsotopeProductCollection;
 
 class CouponProduct extends Product {
     /**

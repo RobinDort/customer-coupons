@@ -75,10 +75,10 @@ class InitialSetup {
             $dbProductInteraction = new DBProductInteraction();
             $productCount = $dbProductInteraction->selectProduct($couponProduct->getAlias());
     
-            if ($productCount === 0) {
+           // if ($productCount === 0) {
                 // register the new product type in order to use it.
                 TypeAgent::registerModelType($couponProductType->getName(), CouponProduct::class);
-                
+
                 $couponProductOrderPages = array(
                     "0" => 171
                 );
@@ -88,7 +88,7 @@ class InitialSetup {
 
                 $couponProduct->save();
     
-            }
+           // }
     
         }
 
