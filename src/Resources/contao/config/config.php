@@ -33,9 +33,6 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
         // save new product type 
         $couponProductType->save();
 
-        // register the new product type in order to use it.
-        TypeAgent::registerModelType($couponProductType->getName(), CouponProductType::class);
-
         /**
          * Create product group for the coupons
          */
@@ -79,6 +76,9 @@ if (empty($GLOBALS["INITIAL_SETUP"])) {
 
         if ($productCount === 0) {
             $couponProduct->save();
+
+             // register the new product type in order to use it.
+            TypeAgent::registerModelType($couponProductType->getName(), CouponProduct::class);
         }
 
     }
