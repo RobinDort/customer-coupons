@@ -28,6 +28,8 @@ class CouponProductType extends ProductType {
      * @property bool   $downloads
      */
 
+     protected static $strTable = 'tl_iso_producttype';
+
      private const COUPON_NAME = "Coupon";
      private const COUPON_CLASS = "standard";
      private const COUPON_LIST_TEMPLATE = "iso_list_default";

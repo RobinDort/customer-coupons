@@ -36,6 +36,8 @@ class CouponProduct extends Product {
      * @property string $stop
      */
 
+     protected static $strTable = 'tl_iso_product';
+
      private const PRODUCT_NAME = "Geschenkgutschein";
      private const PRODUCT_DESCRIPTION = "Geschenkgutschein, einzulösen in unserem Shop";
 
@@ -43,6 +45,7 @@ class CouponProduct extends Product {
         parent::__construct();
 
         $unixTime = time();
+        $this->pid = 0;
         $this->tstamp = $unixTime;
         $this->dateAdded = $unixTime;
         $this->type = 33;

@@ -83,6 +83,9 @@ class CouponPage extends PageModel {
      * @property string  $templateGroup
      * */
 
+
+   protected static $strTable = 'tl_page';
+
    private const PAGE_TITLE = "Coupons";
    private const PAGE_TYPE = "regular";
    private const PAGE_ROBOTS = "index,follow";

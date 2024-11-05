@@ -33,6 +33,8 @@ class CouponArticle extends ArticleModel {
      * @property string  $classes
      */
 
+     protected static $strTable = 'tl_article';
+     
      private const ARTICLE_TITLE = "Coupons";
 
      public function __construct() {
