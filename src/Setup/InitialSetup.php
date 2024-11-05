@@ -30,15 +30,20 @@ class InitialSetup {
                 // save new product type 
                 $couponProductType->save();
         
+
                 /**
                  * Create product group for the coupons
                  */
                 $couponProductGroup = new CouponProductGroup();
-                $couponProductGroup->setProductType(32);
-                $couponProductGroup->setSorting(900);
-        
-                // save for debug purpose
-                $couponProductGroup->save();
+                $dbProductGroupInteraction = new DBProductGroupInteraction();
+
+                if ($dbProductGroupInteraction->selectProductGroup($couponProductGroup->getName()) === 0) {
+                    $couponProductGroup->setProductType($couponProductType->id);
+                    $couponProductGroup->setSorting(900);
+            
+                    // save for debug purpose
+                    $couponProductGroup->save();
+                }
             }
         
             /**
