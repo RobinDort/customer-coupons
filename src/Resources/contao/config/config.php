@@ -1,7 +1,14 @@
 <?php
 use RobinDort\CustomerCoupons\Setup\InitialSetup;
+use RobinDort\CustomerCoupons\Model\CouponProductGroup;
+
+/**
+ * Register Models
+ */
+$GLOBALS['TL_MODELS']['tl_iso_group'] = CouponProductGroup::class;
+
 /*
- * Register hook
+ * Register hooks
  */
 $GLOBALS['TL_HOOKS']['initializeSystem'][] = [InitialSetup::class, 'runSetup'];
 

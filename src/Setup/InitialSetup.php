@@ -37,7 +37,7 @@ class InitialSetup {
             $dbProductGroupInteraction = new DBProductGroupInteraction();
 
             if ($dbProductGroupInteraction->selectProductGroup($couponProductGroup->getName()) === 0) {
-                $couponProductGroup->setProductType($couponProductType->getID());
+                $couponProductGroup->setProductType($couponProductType->id);
                 $couponProductGroup->setSorting(900);
         
                 // save group

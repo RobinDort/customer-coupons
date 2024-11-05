@@ -23,7 +23,9 @@ class CouponProductGroup extends Group {
     }
 
     public function setProductType($productTypeID) {
-        $this->product_type = $productTypeID;
+        if (isset($this->arrData['product_type'])) {
+            $this->product_type = $productTypeID;
+        }
     }
 
     public function setSorting($sorting) {
