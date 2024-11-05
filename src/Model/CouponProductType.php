@@ -34,20 +34,7 @@ class CouponProductType extends ProductType {
      private const COUPON_READER_TEMPLATE = "iso_reader_default";
      private const COUPON_LIST_GALLERY = 17;
      private const COUPON_READER_GALLERY = 19;
-     private const COUPON_ATTRIBUTES = array
-     (
-         array('name'=>'type', 'enabled'=>1),
-         array('name'=>'pages', 'enabled'=>1),
-         array('name'=>'alias', 'enabled'=>1),
-         array('name'=>'name', 'enabled'=>1),
-         array('name'=>'description', 'enabled'=>1),
-         array('name'=>'price', 'enabled'=>1),
-         array('name'=>'images', 'enabled'=>1),
-         array('name'=>'published', 'enabled'=>1),
-         array('name'=>'start', 'enabled'=>1),
-         array('name'=>'stop', 'enabled'=>1),
-     );
-     private const COUPON_ATTRIBUTES2 = array (
+     private const COUPON_ATTRIBUTES = array (
       'type' => [
           'enabled' => '1',
           'name' => 'type',
@@ -310,7 +297,7 @@ class CouponProductType extends ProductType {
         $this->reader_template = self::COUPON_READER_TEMPLATE;
         $this->list_gallery = self::COUPON_LIST_GALLERY;
         $this->reader_gallery = self::COUPON_READER_GALLERY;
-        $this->attributes = serialize(self::COUPON_ATTRIBUTES2);
+        $this->attributes = serialize(self::COUPON_ATTRIBUTES);
      }
 
 

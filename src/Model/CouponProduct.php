@@ -45,7 +45,7 @@ class CouponProduct extends Product {
         $unixTime = time();
         $this->tstamp = $unixTime;
         $this->dateAdded = $unixTime;
-        $this->type = 32;
+        $this->type = 33;
         $this->pages = serialize(array(
             "0" => 171
         ));
