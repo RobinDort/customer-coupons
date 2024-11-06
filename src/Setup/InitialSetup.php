@@ -74,7 +74,19 @@ class InitialSetup {
     
             // Create new isotope product with different prices to represent the coupons.
             $couponProduct = new CouponProduct();
+            \System::log("product class created", __METHOD__, "TL_ERROR");
+
             TypeAgent::registerModelType("Coupon", CouponProduct::class);
+            \System::log("product class registered", __METHOD__, "TL_ERROR");
+
+            $couponProduct->setType($couponProductType->id);
+            $couponProduct->setPages($couponProductOrderPages);
+            $couponProduct->setOrderPages($couponProductOrderPages);
+
+            \System::log("product class type: " . $couponProduct->type , __METHOD__, "TL_ERROR");
+
+
+
 
 
             $dbProductInteraction = new DBProductInteraction();
