@@ -3,6 +3,7 @@ namespace RobinDort\CustomerCoupons\Model;
 
 use Isotope\Model\Product;
 use Isotope\Interfaces\IsotopeProductCollection;
+use Contao\PageModel;
 
 class CouponProduct extends Product {
     /**
