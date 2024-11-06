@@ -77,14 +77,14 @@ class InitialSetup {
     
            // if ($productCount === 0) {
                 // register the new product type in order to use it.
-                TypeAgent::registerModelType($couponProductType->getName(), CouponProduct::class);
+                //TypeAgent::registerModelType($couponProductType->getName(), CouponProduct::class);
 
-                $couponProductOrderPages = array(
-                    "0" => 171
-                );
-                $couponProduct->setType($couponProductType->id);
-                $couponProduct->setPages($couponProductOrderPages);
-                $couponProduct->setOrderPages($couponProductOrderPages);
+                // $couponProductOrderPages = array(
+                //     "0" => 171
+                // );
+                // $couponProduct->setType($couponProductType->id);
+                // $couponProduct->setPages($couponProductOrderPages);
+                // $couponProduct->setOrderPages($couponProductOrderPages);
 
                 $couponProduct->save();
     
