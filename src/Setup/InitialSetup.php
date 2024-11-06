@@ -12,6 +12,8 @@ use RobinDort\CustomerCoupons\Backend\Database\DBProductGroupInteraction;
 use RobinDort\CustomerCoupons\Backend\Database\DBPageInteraction;
 use RobinDort\CustomerCoupons\Backend\Database\DBProductInteraction;
 
+use Isotope\Model\TypeAgent;
+
 class InitialSetup {
     public function runSetup() {
         
@@ -72,12 +74,14 @@ class InitialSetup {
     
             // Create new isotope product with different prices to represent the coupons.
             $couponProduct = new CouponProduct();
+            TypeAgent::registerModelType("Coupon", CouponProduct::class);
+
+
             $dbProductInteraction = new DBProductInteraction();
             $productCount = $dbProductInteraction->selectProduct($couponProduct->getAlias());
     
            // if ($productCount === 0) {
                 // register the new product type in order to use it.
-                TypeAgent::registerModelType("Coupon", CouponProduct::class);
 
                 // $couponProductOrderPages = array(
                 //     "0" => 171
