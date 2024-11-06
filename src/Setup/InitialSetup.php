@@ -84,6 +84,7 @@ class InitialSetup {
             $couponProduct->setOrderPages($couponProductOrderPages);
 
             \System::log("product class type: " . $couponProduct->type , __METHOD__, "TL_ERROR");
+            $couponProduct->save();
 
 
 
@@ -102,7 +103,7 @@ class InitialSetup {
                 // $couponProduct->setPages($couponProductOrderPages);
                 // $couponProduct->setOrderPages($couponProductOrderPages);
 
-                $couponProduct->save();
+              
     
            // }
     

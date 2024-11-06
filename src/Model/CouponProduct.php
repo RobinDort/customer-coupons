@@ -2,6 +2,7 @@
 namespace RobinDort\CustomerCoupons\Model;
 
 use Isotope\Model\Product;
+use Isotope\Model\ProductPrice;
 use Isotope\Interfaces\IsotopeProductCollection;
 use Contao\PageModel;
 
@@ -42,6 +43,7 @@ class CouponProduct extends Product {
 
      private const PRODUCT_NAME = "Geschenkgutschein";
      private const PRODUCT_DESCRIPTION = "Geschenkgutschein, einzulösen in unserem Shop";
+     private const PRODUCT_PRICE = 19.99;
 
      public function __construct() {
         parent::__construct();
@@ -56,8 +58,30 @@ class CouponProduct extends Product {
         $this->description = self::PRODUCT_DESCRIPTION;
         $this->price = 19.99;
         $this->published = true;
+
+        //create price
+        $this->setProductPrice();
      }
 
+
+     private function setProductPrice() {
+        // Create a ProductPrice object
+        $objPrice = new ProductPrice();
+
+        // Set the price using arrData
+        $objPrice->arrData = [
+            'price' => self::PRODUCT_PRICE,   // Set the price
+            'tier_keys' => '1',               // Tier quantity
+            'tier_values' => self::PRODUCT_PRICE, // Price for the tier
+            'tax_class' => 0                  // Assuming no tax class for simplicity
+        ];
+
+        // Associate this price with the product
+        $objPrice->setProduct($this);
+
+        // Save the price in the database
+        $objPrice->save();
+     }
 
      /**
       * @inheritdoc
