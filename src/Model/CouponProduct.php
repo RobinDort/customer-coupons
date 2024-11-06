@@ -49,7 +49,6 @@ class CouponProduct extends Product {
         $unixTime = time();
 
         $this->pid = 0;
-        $this->type = 41;
         $this->tstamp = $unixTime;
         $this->dateAdded = $unixTime;
         $this->alias = strtolower(self::PRODUCT_NAME);
