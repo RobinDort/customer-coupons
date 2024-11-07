@@ -5,12 +5,10 @@ use RobinDort\CustomerCoupons\Model\CouponProductType;
 use RobinDort\CustomerCoupons\Model\CouponProductGroup;
 use RobinDort\CustomerCoupons\Model\CouponPage;
 use RobinDort\CustomerCoupons\Model\CouponArticle;
-use RobinDort\CustomerCoupons\Model\CouponProduct;
 
 use RobinDort\CustomerCoupons\Backend\Database\DBProductTypeInteraction;
 use RobinDort\CustomerCoupons\Backend\Database\DBProductGroupInteraction;
 use RobinDort\CustomerCoupons\Backend\Database\DBPageInteraction;
-use RobinDort\CustomerCoupons\Backend\Database\DBProductInteraction;
 
 use Isotope\Model\TypeAgent;
 
@@ -38,17 +36,14 @@ class InitialSetup {
             $couponProductGroup = new CouponProductGroup();
             $dbProductGroupInteraction = new DBProductGroupInteraction();
 
-            if ($dbProductGroupInteraction->selectProductGroup($couponProductGroup->getName()) === 0) {
-                $couponProductGroup->setProductType($couponProductType->id);
-                $couponProductGroup->setSorting(900);
-        
+            if ($dbProductGroupInteraction->selectProductGroup($couponProductGroup->getName()) === 0) {        
                 // save group
                 $couponProductGroup->save();
             }
         }
     
         /**
-         * Create new page that displays later on newly created product "coupon".
+         * Create new page that later on displays newly created product "coupon".
          */
         $couponPage = new CouponPage();
         
@@ -71,41 +66,6 @@ class InitialSetup {
             if (!$couponArticle->selfExists()) {
                 $couponArticle->save();
             }
-    
-            // Create new isotope product with different prices to represent the coupons.
-            $couponProduct = new CouponProduct();
-            \System::log("product class created", __METHOD__, "TL_ERROR");
-
-            TypeAgent::registerModelType("Coupon", CouponProduct::class);
-            \System::log("product class registered", __METHOD__, "TL_ERROR");
-
-            $couponProduct->setType($couponProductType->id);
-            $couponProduct->setPages($couponProductOrderPages);
-            $couponProduct->setOrderPages($couponProductOrderPages);
-
-            \System::log("product class type: " . $couponProduct->type , __METHOD__, "TL_ERROR");
-            $couponProduct->save();
-
-
-
-
-
-            $dbProductInteraction = new DBProductInteraction();
-            $productCount = $dbProductInteraction->selectProduct($couponProduct->getAlias());
-    
-           // if ($productCount === 0) {
-                // register the new product type in order to use it.
-
-                // $couponProductOrderPages = array(
-                //     "0" => 171
-                // );
-                // $couponProduct->setType($couponProductType->id);
-                // $couponProduct->setPages($couponProductOrderPages);
-                // $couponProduct->setOrderPages($couponProductOrderPages);
-
-              
-    
-           // }
     
         }
 
