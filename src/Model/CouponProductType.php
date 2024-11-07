@@ -142,7 +142,7 @@ class CouponProductType extends ProductType {
           'position' => 12,
       ],
       'description' => [
-          'enabled' => '',
+          'enabled' => '1',
           'name' => 'description',
           'legend' => 'general_legend',
           'tl_class' => '',
