@@ -122,7 +122,7 @@ class CouponPage extends PageModel {
          8 => "g6"
         ));
         $this->sitemap = self::PAGE_SITEMAP;
-        $this->hide = true;
+        $this->hide = false;
         $this->published = true;
      }
 

@@ -307,8 +307,8 @@ class CouponProductType extends ProductType {
         $this->reader_template = self::COUPON_READER_TEMPLATE;
         $this->list_gallery = self::COUPON_LIST_GALLERY;
         $this->reader_gallery = self::COUPON_READER_GALLERY;
-        $this->attributes = serialize(self::COUPON_ATTRIBUTES);
         $this->downloads = true;
+        $this->attributes = serialize(self::COUPON_ATTRIBUTES);
      }
 
 
