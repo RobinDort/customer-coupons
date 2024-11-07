@@ -2,7 +2,7 @@
 namespace RobinDort\CustomerCoupons\Model;
 
 use Isotope\Model\Rule;
-use RobinDort\CustomerCoupons\Backend\Database\DBRuleInteraction;
+use RobinDort\CustomerCoupons\Backend\Database\DBTaxClassInteraction;
 
 class CouponRule extends Rule {
 
@@ -48,6 +48,9 @@ class CouponRule extends Rule {
     * @property bool   $groupOnly
     */
 
+    private const RULE_NAME = "Geschenkgutschein";
+    private const TAX_CLASS_NAME = "inkl. MwSt. 7 %";
+
     public function __construct() {
         parent::__construct();
 
@@ -61,11 +64,11 @@ class CouponRule extends Rule {
 
         // for the first try set default values for the new rule.
         $this->tstamp = $unixTime;
-        $this->name = "Test Gutschein Plugin";
-        $this->label = "Plugin Gutscheinrabatt 10€";
+       // $this->name = "Test Gutschein Plugin";
+       // $this->label = "Plugin Gutscheinrabatt 10€";
         $this->type = "cart";
-        $this->discount = "-10";
-        $this->tax_class = 0;
+       // $this->discount = "-10";
+        $this->tax_class = getTaxClassID();
         $this->applyTo = "subtotal";
         $this->rounding = "down";
         $this->enableCode = true;
@@ -94,8 +97,27 @@ class CouponRule extends Rule {
         return false;
     }
 
+    public function setName($ruleMember, $price) {
+        $this->name = "" . self::RULE_NAME . "-" . $ruleMember . "-" . $price;
+    }
+
+    public function setLabel($ruleMember, $price) {
+        $this->label =  "" . self::RULE_NAME . "-" . $ruleMember . "-" . $price;
+    }
+
+    public function setDiscount($discount) {
+        $this->discount = "-" . $discount;
+    }
+
     public function getRuleID() {
         return $this->id;
+    }
+
+    public function getTaxClassID() {
+        $dbTaxClassInteraction = new DBTaxClassInteraction();
+        $taxID = $dbTaxClassInteraction->selectTaxClassID(self::TAX_CLASS_NAME);
+        return $taxID;
+
     }
 
 }
