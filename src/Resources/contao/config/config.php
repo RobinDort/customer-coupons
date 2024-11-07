@@ -1,5 +1,5 @@
 <?php
-use RobinDort\CustomerCoupons\Setup\InitialSetup;
+use RobinDort\CustomerCoupons\EventListener\contao\InitialSetup;
 use RobinDort\CustomerCoupons\Model\CouponProductGroup;
 
 /**
@@ -11,6 +11,7 @@ $GLOBALS['TL_MODELS']['tl_iso_group'] = CouponProductGroup::class;
  * Register hooks
  */
 $GLOBALS['TL_HOOKS']['initializeSystem'][] = [InitialSetup::class, 'runSetup'];
+
 
 
 // @TODO -> Rule usage -> use it inside the frontend template later on.

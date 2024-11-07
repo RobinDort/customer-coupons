@@ -1,5 +1,5 @@
 <?php
-namespace RobinDort\CustomerCoupons\Setup;
+namespace RobinDort\CustomerCoupons\EventListener\contao;
 
 use RobinDort\CustomerCoupons\Model\CouponProductType;
 use RobinDort\CustomerCoupons\Model\CouponProductGroup;
